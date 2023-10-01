@@ -1,14 +1,18 @@
 import os
+from dataclasses import field
 from typing import Final
 
-from discord import Intents
 from dotenv import load_dotenv
+
+from bot.misc.utils import SingletonABC
 
 load_dotenv()
 
 
-class APIDiscordBot:
-    TOKEN: Final[str] = os.environ.get("TOKEN", "Token not found")
-    INTENTS = Intents.default()
+class APIKeyDiscordBot(SingletonABC):
+    TOKEN: Final[str] = field(default=os.environ.get("TOKEN", "TOKEN not found"))
 
-APIDiscordBot.INTENTS.message_content = True
+
+class CommandPrefixDiscordBot(SingletonABC):
+    COMMAND_PREFIX: Final[str] = field(default=os.environ.get("COMMAND_PREFIX", "COMMAND_PREFIX not found"))
+

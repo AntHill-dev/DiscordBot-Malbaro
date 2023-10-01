@@ -1,10 +1,18 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Final
 
-from bot.misc.env import APIDiscordBot
+from bot.misc.env import APIKeyDiscordBot, CommandPrefixDiscordBot
+from bot.misc.types import IntentsType
+from bot.misc.utils import SingletonABC, get_default_msg_intents
 
 
-@dataclass
-class BotConfig:  # noqa: D101
-    TOKEN = APIDiscordBot.TOKEN
-    COMMAND_PREFIX = "!"
-    INTENTS = APIDiscordBot.INTENTS
+class DefaultIntents(SingletonABC):
+    INTENTS: Final[IntentsType] = field(default_factory=get_default_msg_intents)
+
+
+@dataclass(frozen=True)
+class BotConfig(SingletonABC):
+    TOKEN: str = APIKeyDiscordBot.TOKEN
+    INTENTS: IntentsType = DefaultIntents.INTENTS
+    COMMAND_PREFIX: str = CommandPrefixDiscordBot.COMMAND_PREFIX
+

@@ -55,6 +55,7 @@ exclude = [
   "dist", "node_modules", "venv", "env",
 ]
 ignore = [
+  "D",
   "D100", # Docstring in public module
   "D203", # Docstring one blank line before class
   "D213", # Docstring multi-line-summary-second-line
