@@ -2,7 +2,11 @@
 name = "DiscordBot-Malbaro"
 version = "0.0.1"
 description = "soon."
-authors = ["Ivan Kovach <eeiprex@gmail.com>"]
+authors = [
+    "Ivan Kovach <eeiprex@gmail.com>",
+    "Denis Olenik <oleynik.denis.2009@gmail.com>",
+    "Pavel Genov <Laironpasha@gmail.com>",
+]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -32,7 +36,9 @@ version = "0.0.1"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
-    {name = "Ivan Kovach", email = "eeiprex@gmail.com"},
+    { name = "Ivan Kovach", email = "eeiprex@gmail.com" },
+    { name = "Pavel Genov", email = "Laironpasha@gmail.com" },
+    { name = "Denis Olenik", email = "oleynik.denis.2009@gmail.com" },
 ]
 
 
@@ -49,41 +55,42 @@ target-version = "py311"
 select = ["ALL"]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 exclude = [
-  ".bzr", ".direnv", ".eggs", ".git", ".git-rewrite", ".hg", ".mypy_cache",
-  ".nox", ".pants.d", ".pytype", ".ruff_cache", ".svn", ".tox", ".venv",
-  ".env", "__pypackages__", "__pycache__", "_build", "buck-out", "build",
-  "dist", "node_modules", "venv", "env",
+    ".bzr", ".direnv", ".eggs", ".git", ".git-rewrite", ".hg", ".mypy_cache",
+    ".nox", ".pants.d", ".pytype", ".ruff_cache", ".svn", ".tox", ".venv",
+    ".env", "__pypackages__", "__pycache__", "_build", "buck-out", "build",
+    "dist", "node_modules", "venv", "env",
 ]
 ignore = [
-  "D",
-  "D100", # Docstring in public module
-  "D203", # Docstring one blank line before class
-  "D213", # Docstring multi-line-summary-second-line
-  "UP007", # Use X | Y insted Optional, Union
-  "ANN002", # Docstring missing-type-args
-  "ANN003", # Docstring missing-type-kwargs
-  "ANN101", # Docstring missing-type-self
-  "ANN102", # Docstring missing-type-cls
-  "ANN401", # Docstring Any type
-  "S101", # Detected assert statement
-  "S311", # Detected pseudo-random generators
-  "FBT001", # Detected boolean positional arg in functions
-  "FBT002", # Detected boolean default value in functions
-  "B006", # Detected mutable arg default
-  "B009", # Detected getattr(obj, ...)
-  "B010", # Detected setattr(obj, ..., ...)
-  "INP001", # Check missing __init__.py in packages
-  "PIE796", # Check for enums that contain duplicate values
-  "T201", # Check for print statement
-  "T203", # Check for pprint statement
-  "PYI001", # Check that type TypeVar, ... def in stubs are prefixed with _
-  "PYI024", # Check use collections.nametuple
-  "RET504", # Check vars which that immediately precede a return eq assign var
-  "PTH123", # Check open() instead Path.open()
-  "TD002", # Check TODO comments includes an author
-  "TD002", # Check TODO comments includes a links
-  "PGH003", # Check 'type: ignore' without annotation warn are intended to be suppressed
-  "PGH004", # Check 'noqa' without annotation diagnostics are intended to be suppressed
+    "D100", # Docstring in public module
+    "D104", # Docstring in public package
+    "D107", # Docstring __init__ method
+    "D203", # Docstring one blank line before class
+    "D213", # Docstring multi-line-summary-second-line
+    "UP007", # Use X | Y insted Optional, Union
+    "ANN002", # Docstring missing-type-args
+    "ANN003", # Docstring missing-type-kwargs
+    "ANN101", # Docstring missing-type-self
+    "ANN102", # Docstring missing-type-cls
+    "ANN401", # Docstring Any type
+    "S101", # Detected assert statement
+    "S311", # Detected pseudo-random generators
+    "FBT001", # Detected boolean positional arg in functions
+    "FBT002", # Detected boolean default value in functions
+    "B006", # Detected mutable arg default
+    "B009", # Detected getattr(obj, ...)
+    "B010", # Detected setattr(obj, ..., ...)
+    "INP001", # Check missing __init__.py in packages
+    "PIE796", # Check for enums that contain duplicate values
+    "T201", # Check for print statement
+    "T203", # Check for pprint statement
+    "PYI001", # Check that type TypeVar, ... def in stubs are prefixed with _
+    "PYI024", # Check use collections.nametuple
+    "RET504", # Check vars which that immediately precede a return eq assign var
+    "PTH123", # Check open() instead Path.open()
+    "TD002", # Check TODO comments includes an author
+    "TD002", # Check TODO comments includes a links
+    "PGH003", # Check 'type: ignore' without annotation warn are intended to be suppressed
+    "PGH004", # Check 'noqa' without annotation diagnostics are intended to be suppressed
 ]
 
 
