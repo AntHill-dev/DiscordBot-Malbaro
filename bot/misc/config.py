@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from typing import Final
 
 from bot.misc.env import APIKeyDiscordBot, CommandPrefixDiscordBot
+from bot.misc.logs import InterceptHandler
 from bot.misc.types import IntentsType
 from bot.misc.utils import SingletonABC, get_default_msg_intents
 
@@ -28,8 +29,16 @@ class BotConfig(metaclass=SingletonABC):
 
 
 Config = BotConfig()
-
 StartUpParameters = {
     "command_prefix": Config.COMMAND_PREFIX,
     "intents": Config.INTENTS,
+}
+
+handlers_obj = (InterceptHandler,)
+LoggingConfig = {
+    "level": 0,
+    "force": True,
+    "handlers": (
+        handler() for handler in handlers_obj
+    ),
 }
