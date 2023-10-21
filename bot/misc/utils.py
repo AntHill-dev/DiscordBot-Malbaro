@@ -1,9 +1,11 @@
 from abc import ABCMeta
+from collections.abc import Sequence
 from typing import Any, ClassVar
 
 from discord import Intents
 
-from bot.misc.types import IntentsType
+from bot.misc.logs import InterceptHandler
+from bot.misc.types import HandlerType, IntentsType
 
 
 def get_default_msg_intents() -> IntentsType:
@@ -18,6 +20,14 @@ def get_default_msg_intents() -> IntentsType:
     # noinspection PyDunderSlots,PyUnresolvedReferences
     intents.message_content = True
     return intents
+
+
+def get_handlers_for_filtered() -> Sequence[HandlerType]:
+    """Function for generating a sequence of handlers for logging."""
+    handlers_obj = (
+        InterceptHandler,
+    )
+    return [handler() for handler in handlers_obj]
 
 
 class SingletonABC(ABCMeta):
