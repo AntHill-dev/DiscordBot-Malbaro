@@ -4,11 +4,11 @@ from discord.ext import commands
 from bot.misc.types import AppContext, BotType
 
 
-class ExampleCommand(commands.Cog):
+class TestSlashCommand(commands.Cog):
     """The cog class of example commands.
 
-    Methods: (sub-commands)
-        hello(self, cts: AppContext) -> None:
+    Methods:
+        hello(self, ctx: AppContext) -> None:
             User greeting command.
     """
 
@@ -28,4 +28,4 @@ def setup(bot: BotType) -> None:
     Args:
         bot: Bot for which cog will be loaded.
     """
-    bot.add_cog(ExampleCommand())
+    bot.add_cog(TestSlashCommand())

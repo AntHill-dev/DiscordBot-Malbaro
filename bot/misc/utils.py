@@ -24,9 +24,7 @@ def get_default_msg_intents() -> IntentsType:
 
 def get_handlers_for_filtered() -> Sequence[HandlerType]:
     """Function for generating a sequence of handlers for logging."""
-    handlers_obj = (
-        InterceptHandler,
-    )
+    handlers_obj = (InterceptHandler,)
     return [handler() for handler in handlers_obj]
 
 

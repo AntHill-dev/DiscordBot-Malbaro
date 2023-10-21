@@ -30,6 +30,7 @@ class BotConfig(BaseSettings):
         intents - A using intents for bot.
         command_prefix - A bot's command prefix.
     """
+
     token: str
     command_prefix: str
     intents: IntentsType = Field(default_factory=get_default_msg_intents)
@@ -43,6 +44,7 @@ class BotConfig(BaseSettings):
 
 class BaseLoggingConfig(BaseSettings):
     """Base logging config."""
+
     level: int = 0
     force: bool = True
     handlers: Sequence[HandlerType] = Field(default_factory=get_handlers_for_filtered)
@@ -56,6 +58,7 @@ class BaseLoggingConfig(BaseSettings):
 
 class LoggingConfig(BaseModel):
     """Initialization class for logging."""
+
     base: BaseLoggingConfig = Field(default_factory=BaseLoggingConfig)
     format_output: str = "{time} | {level} | {module}:{function}:{line} | {message}"
     rotation: str = "2 MB"
@@ -66,6 +69,7 @@ class LoggingConfig(BaseModel):
 
 class MainBotConfig(BaseSettings):
     """Main configuration storage class."""
+
     db: ConfigBD = Field(default_factory=ConfigBD)
     bot: BotConfig = Field(default_factory=BotConfig)
     logging: LoggingConfig = Field(default_factory=LoggingConfig)
