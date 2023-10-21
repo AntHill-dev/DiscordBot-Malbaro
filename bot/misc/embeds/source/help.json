@@ -1,0 +1,14 @@
+{
+    "title": "Bot Help",
+    "description": "```Show bot commands```",
+    "color": 4321431,
+    "timestamp": "2023-10-08T15:21:00.966Z",
+    "thumbnail": {
+        "url": "https://avatars.githubusercontent.com/u/129376721?s=200&v=4"
+    },
+    "footer": {
+        "text": "AntHill",
+        "icon_url": "https://avatars.githubusercontent.com/u/129376721?s=200&v=4"
+    },
+    "fields": []
+}
