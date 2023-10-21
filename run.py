@@ -1,9 +1,9 @@
-from bot.main import bot
+import bot
 
 
 def main() -> None:
     """Entry point to Bot."""
-    bot.run()
+    bot.start()
 
 
 if __name__ == "__main__":

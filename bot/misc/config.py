@@ -1,44 +1,74 @@
-from dataclasses import dataclass, field
-from typing import Final
+from collections.abc import Sequence
+from pathlib import Path
 
-from bot.misc.env import APIKeyDiscordBot, CommandPrefixDiscordBot
-from bot.misc.logs import InterceptHandler
-from bot.misc.types import IntentsType
-from bot.misc.utils import SingletonABC, get_default_msg_intents
+from dotenv import load_dotenv
+from pydantic import BaseModel, Field
+from pydantic_settings import BaseSettings
+
+from bot.misc.types import HandlerType, IntentsType
+from bot.misc.utils import get_default_msg_intents, get_handlers_for_filtered
+
+load_dotenv()
+env_location = Path(".env").resolve()
 
 
-class DefaultIntents:
-    """Storage for the bot's intents."""
+class ConfigBD(BaseSettings):
+    """Config for control BD."""
 
-    INTENTS: Final[IntentsType] = field(default_factory=get_default_msg_intents)
+    class Config:  # noqa: D106
+        case_sensitive = True
+        env_prefix = "BD_"
+        _env_file = env_location
+        _env_file_encoding = "utf-8"
 
 
-@dataclass(frozen=True)
-class BotConfig(metaclass=SingletonABC):
+class BotConfig(BaseSettings):
     """Bot configuration storage class.
 
     Attributes:
-        TOKEN - A secret token for bot.
-        INTENTS - A using intents for bot.
-        COMMAND_PREFIX - A bot's command prefix.
+        token - A secret token for bot.
+        intents - A using intents for bot.
+        command_prefix - A bot's command prefix.
     """
+    token: str
+    command_prefix: str
+    intents: IntentsType = Field(default_factory=get_default_msg_intents)
 
-    TOKEN: str = APIKeyDiscordBot.TOKEN
-    INTENTS: IntentsType = DefaultIntents.INTENTS
-    COMMAND_PREFIX: str = CommandPrefixDiscordBot.COMMAND_PREFIX
+    class Config:  # noqa: D106
+        case_sensitive = True
+        env_prefix = "BOT_"
+        _env_file = env_location
+        _env_file_encoding = "utf-8"
 
 
-Config = BotConfig()
-StartUpParameters = {
-    "command_prefix": Config.COMMAND_PREFIX,
-    "intents": Config.INTENTS,
-}
+class BaseLoggingConfig(BaseSettings):
+    """Base logging config."""
+    level: int = 0
+    force: bool = True
+    handlers: Sequence[HandlerType] = Field(default_factory=get_handlers_for_filtered)
 
-handlers_obj = (InterceptHandler,)
-LoggingConfig = {
-    "level": 0,
-    "force": True,
-    "handlers": (
-        handler() for handler in handlers_obj
-    ),
-}
+    class Config:  # noqa: D106
+        case_sensitive = True
+        env_prefix = "LOG_"
+        _env_file = env_location
+        _env_file_encoding = "utf-8"
+
+
+class LoggingConfig(BaseModel):
+    """Initialization class for logging."""
+    base: BaseLoggingConfig = Field(default_factory=BaseLoggingConfig)
+    format_output: str = "{time} | {level} | {module}:{function}:{line} | {message}"
+    rotation: str = "2 MB"
+    format_compression: str = "zip"
+    default_dir: str = "logs"
+    extension_files: str = "log"
+
+
+class MainBotConfig(BaseSettings):
+    """Main configuration storage class."""
+    db: ConfigBD = Field(default_factory=ConfigBD)
+    bot: BotConfig = Field(default_factory=BotConfig)
+    logging: LoggingConfig = Field(default_factory=LoggingConfig)
+
+
+config = MainBotConfig()

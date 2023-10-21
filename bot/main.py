@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 from bot.cogs.main import setup_cogs_for_user
-from bot.misc.config import Config, StartUpParameters
+from bot.misc.config import config
 from bot.misc.utils import SingletonABC
 
 
@@ -25,7 +25,4 @@ class BotMarlboro(commands.Bot, metaclass=SingletonABC):
 
     def run(self) -> None:
         """Start a bot using a secret token."""
-        super().run(Config.TOKEN)
-
-
-bot = BotMarlboro(**StartUpParameters)
+        super().run(config.bot.token)
