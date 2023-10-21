@@ -16,6 +16,7 @@ typed-argument-parser = "^1.8.1"
 pydantic = "^2.4.1"
 python-dotenv = "^1.0.0"
 py-cord = "^2.4.1"
+pydantic-settings = "^2.0.3"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.5.1"
