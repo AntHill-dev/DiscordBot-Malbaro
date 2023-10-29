@@ -13,7 +13,30 @@ env_location = Path(".env").resolve()
 
 
 class ConfigBD(BaseSettings):
-    """Config for control BD."""
+    """Config for control BD.
+
+    Attributes:
+        user - A user for PostgreSQL DataBase. (default: postgres)
+        password - A password for PostgreSQL DataBase.
+        host - A host for PostgreSQL DataBase. (default: localhost)
+        port - A port for PostgreSQL DataBase. (default: 5432)
+        database - A database name.
+        root_database - A root database name.
+        tables - A dictionary of tables and their columns.
+    """
+
+    user: str = "postgres"
+    password: str
+    host: str = "localhost"
+    port: str = "5432"
+    database: str
+    root_database: str = "postgres"
+
+    tables: dict[str, str] = Field({
+        "users": "ID SERIAL PRIMARY KEY NOT NULL UNIQUE, username VARCHAR NOT NULL UNIQUE",
+        "info": "ID SERIAL NOT NULL UNIQUE, messages INT NOT NULL DEFAULT 0, voice_time INT NOT NULL DEFAULT 0",
+        "about": "ID SERIAL NOT NULL UNIQUE, about TEXT NOT NULL DEFAULT 'No info'",
+    })
 
     class Config:  # noqa: D106
         case_sensitive = True
