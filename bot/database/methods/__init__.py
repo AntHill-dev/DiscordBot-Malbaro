@@ -1,9 +1,11 @@
+from .get_user_about import GetUserAbout
 from .get_user_id import GetUserID
 from .set_user_about import SetUserAbout
 from .set_user_info import SetUserInfo
 
 
 class Methods(
+    GetUserAbout,
     GetUserID,
     SetUserAbout,
     SetUserInfo,
@@ -13,6 +15,9 @@ class Methods(
     Methods:
         get_user_id_by_username(self: "main.DatabaseMalboro", username: str)
             Get user id by username.
+
+        get_user_about(self: "main.DatabaseMalboro", user_id: int)
+            Get user about by user id.
 
         set_user_about(self: "main.DatabaseMalboro", user_id: int, about: str)
             Set user about by user id.
