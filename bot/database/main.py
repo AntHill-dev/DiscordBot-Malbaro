@@ -5,11 +5,12 @@ import psycopg2
 import psycopg2.sql
 from loguru import logger
 
+from bot.database.methods import Methods
 from bot.misc.config import config
 from bot.misc.utils import SingletonABC
 
 
-class DatabaseMalboro(metaclass=SingletonABC):
+class DatabaseMalboro(Methods, metaclass=SingletonABC):
     """Main Database class.
 
     Methods:
