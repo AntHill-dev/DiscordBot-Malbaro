@@ -4,7 +4,7 @@ version = "0.0.1"
 description = "soon."
 authors = [
     "Ivan Kovach <eeiprex@gmail.com>",
-    "Denis Olenik <oleynik.denis.2009@gmail.com>",
+    "Denis Olenik <main@dsop.online>",
     "Pavel Genov <Laironpasha@gmail.com>",
 ]
 readme = "README.md"
@@ -39,7 +39,7 @@ requires-python = ">=3.11"
 authors = [
     { name = "Ivan Kovach", email = "eeiprex@gmail.com" },
     { name = "Pavel Genov", email = "Laironpasha@gmail.com" },
-    { name = "Denis Olenik", email = "oleynik.denis.2009@gmail.com" },
+    { name = "Denis Olenik", email = "main@dsop.online" },
 ]
 
 
