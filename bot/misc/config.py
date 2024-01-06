@@ -33,9 +33,9 @@ class ConfigBD(BaseSettings):
     root_database: str = "postgres"
 
     tables: dict[str, str] = Field({
-        "users": "ID SERIAL PRIMARY KEY NOT NULL UNIQUE, username VARCHAR NOT NULL UNIQUE",
-        "info": "ID SERIAL NOT NULL UNIQUE, messages INT NOT NULL DEFAULT 0, voice_time INT NOT NULL DEFAULT 0",
-        "about": "ID SERIAL NOT NULL UNIQUE, about TEXT NOT NULL DEFAULT 'No info'",
+        "users": "ID BIGINT PRIMARY KEY NOT NULL UNIQUE, username VARCHAR NOT NULL UNIQUE",
+        "info": "ID BIGINT NOT NULL UNIQUE, messages INT NOT NULL DEFAULT 0, voice_time INT NOT NULL DEFAULT 0",
+        "about": "ID BIGINT NOT NULL UNIQUE, about TEXT NOT NULL DEFAULT 'No info'",
     })
 
     class Config:  # noqa: D106
