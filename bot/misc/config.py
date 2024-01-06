@@ -57,6 +57,7 @@ class BotConfig(BaseSettings):
     token: str
     command_prefix: str
     intents: IntentsType = Field(default_factory=get_default_msg_intents)
+    discord_guild_id: int
 
     class Config:  # noqa: D106
         case_sensitive = True
