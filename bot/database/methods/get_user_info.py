@@ -20,7 +20,7 @@ class GetUserInfo:
             id=user_id,
             messages_count=result[0][1],
             voice_time=result[0][2],
-        ) if not result else User(
+        ) if result else User(
             id=user_id,
             messages_count=0,
             voice_time=0,
