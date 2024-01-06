@@ -10,6 +10,7 @@ class EmbedJSONTypes(StrEnum):
     """JSON Embed files."""
 
     HELP = "help"
+    YOU_ARE_NOT_ADMIN = "you_are_not_admin"
 
     @property
     def path(self) -> Path:
