@@ -1,6 +1,7 @@
 import psycopg2.sql
 
 from bot.database import main
+from bot.database.models.user import User
 
 
 class SetUserInfo:
@@ -8,16 +9,12 @@ class SetUserInfo:
 
     def set_user_info(
             self: "main.DatabaseMarlboro",
-            user_id: int,
-            messages: int,
-            voice_time: int,
+            user: User,
     ) -> None:
         """Set user info.
 
         Args:
-            user_id: User id
-            messages: Messages count
-            voice_time: Voice time
+            user: User
 
         Returns:
             None
@@ -30,5 +27,5 @@ class SetUserInfo:
                 ON CONFLICT (id) DO UPDATE
                 SET messages = excluded.messages, voice_time = excluded.voice_time
                 """,
-            ), user_id, messages, voice_time, noreturn=True,
+            ), user.id, user.messages_count, user.voice_time, noreturn=True,
         )
