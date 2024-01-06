@@ -7,7 +7,7 @@ class SetUserInfo:
     """Set user info by user id."""
 
     def set_user_info(
-            self: "main.DatabaseMalboro",
+            self: "main.DatabaseMarlboro",
             user_id: int,
             messages: int,
             voice_time: int,

@@ -10,7 +10,7 @@ from bot.misc.config import config
 from bot.misc.utils import SingletonABC
 
 
-class DatabaseMalboro(Methods, metaclass=SingletonABC):
+class DatabaseMarlboro(Methods, metaclass=SingletonABC):
     """Main Database class.
 
     Methods:
@@ -110,4 +110,4 @@ class DatabaseMalboro(Methods, metaclass=SingletonABC):
             self.close()
 
 
-database = DatabaseMalboro()
+database = DatabaseMarlboro()

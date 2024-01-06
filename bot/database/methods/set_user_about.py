@@ -7,7 +7,7 @@ class SetUserAbout:
     """Set user about by user id."""
 
     def set_user_about(
-            self: "main.DatabaseMalboro",
+            self: "main.DatabaseMarlboro",
             user_id: int,
             about: str,
     ) -> None:

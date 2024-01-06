@@ -15,18 +15,18 @@ class Methods(
     """Database methods class.
 
     Methods:
-        get_user_id_by_username(self: "main.DatabaseMalboro", username: str) -> int
+        get_user_id_by_username(self: "main.DatabaseMarlboro", username: str) -> int
             Get user id by username.
 
-        get_user_about(self: "main.DatabaseMalboro", user_id: int) -> str
+        get_user_about(self: "main.DatabaseMarlboro", user_id: int) -> str
             Get user about by user id.
 
-        get_user_info(self: "main.DatabaseMalboro", user_id: int) -> list
+        get_user_info(self: "main.DatabaseMarlboro", user_id: int) -> list
             Get user info by user id.
 
-        set_user_about(self: "main.DatabaseMalboro", user_id: int, about: str) -> None
+        set_user_about(self: "main.DatabaseMarlboro", user_id: int, about: str) -> None
             Set user about by user id.
 
-        set_user_info(self: "main.DatabaseMalboro", user_id: int, messages: int, voice_time: int) -> None
+        set_user_info(self: "main.DatabaseMarlboro", user_id: int, messages: int, voice_time: int) -> None
             Set user info by user id.
     """

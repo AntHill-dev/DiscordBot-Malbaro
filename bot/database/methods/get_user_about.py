@@ -4,7 +4,7 @@ from bot.database import main
 class GetUserAbout:
     """Get user about by user id."""
 
-    def get_user_about(self: "main.DatabaseMalboro", user_id: int) -> str:
+    def get_user_about(self: "main.DatabaseMarlboro", user_id: int) -> str:
         """Get user about.
 
         Args:

@@ -6,7 +6,7 @@ from bot.database import main
 class GetUserID:
     """Get user id by username."""
 
-    def get_user_id_by_username(self: "main.DatabaseMalboro", username: str) -> int:
+    def get_user_id_by_username(self: "main.DatabaseMarlboro", username: str) -> int:
         """Get user id by username.
 
         Args:
