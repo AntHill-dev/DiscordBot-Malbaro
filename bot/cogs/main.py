@@ -6,6 +6,7 @@ usr_command_list = [
 
 general_cogs_list = [
     "events",
+    "user_info",
 ]
 
 
