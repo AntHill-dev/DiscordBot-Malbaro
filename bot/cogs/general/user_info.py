@@ -3,6 +3,7 @@ from discord.ext import commands
 
 from bot.database.main import database
 from bot.database.models.user import User
+from bot.misc import config
 from bot.misc.types import AppContext, BotType
 
 
@@ -14,13 +15,19 @@ class UserInfoCommand(commands.Cog):
             User greeting command.
     """
 
-    @discord.command(name="userinfo", description="Информация о пользователе")
+    @commands.slash_command(
+            name="userinfo",
+            description="Информация о пользователе",
+            guild_only=True,
+    )
     async def userinfo(
             self,
             ctx: AppContext,
             member: discord.Option(
                 discord.Member,
                 description="Пользователь",
+                required=False,
+                default=None,
             ),
         ) -> None:
         """User info command.
@@ -29,6 +36,8 @@ class UserInfoCommand(commands.Cog):
             ctx: Context of command
             member: Member
         """
+        if member is None:
+            member = ctx.author
         user_info: User = database.get_user_info(member.id)
 
         embed = discord.Embed(
