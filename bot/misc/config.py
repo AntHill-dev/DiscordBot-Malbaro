@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings
 
 from bot.misc.types import HandlerType, IntentsType
-from bot.misc.utils import get_default_msg_intents, get_handlers_for_filtered
+from bot.misc.utils import get_default_intents, get_handlers_for_filtered
 
 load_dotenv()
 env_location = Path(".env").resolve()
@@ -27,15 +27,15 @@ class ConfigBD(BaseSettings):
 
     user: str = "postgres"
     password: str
-    host: str = "localhost"
+    host: str = "127.0.0.1"
     port: str = "5432"
     database: str
     root_database: str = "postgres"
 
     tables: dict[str, str] = Field({
-        "users": "ID SERIAL PRIMARY KEY NOT NULL UNIQUE, username VARCHAR NOT NULL UNIQUE",
-        "info": "ID SERIAL NOT NULL UNIQUE, messages INT NOT NULL DEFAULT 0, voice_time INT NOT NULL DEFAULT 0",
-        "about": "ID SERIAL NOT NULL UNIQUE, about TEXT NOT NULL DEFAULT 'No info'",
+        "users": "ID BIGINT PRIMARY KEY NOT NULL UNIQUE, username TEXT NOT NULL UNIQUE",
+        "info": "ID BIGINT NOT NULL UNIQUE, messages BIGINT NOT NULL DEFAULT 0, voice_time BIGINT NOT NULL DEFAULT 0",
+        "about": "ID BIGINT NOT NULL UNIQUE, about TEXT NOT NULL DEFAULT 'No info'",
     })
 
     class Config:  # noqa: D106
@@ -56,7 +56,7 @@ class BotConfig(BaseSettings):
 
     token: str
     command_prefix: str
-    intents: IntentsType = Field(default_factory=get_default_msg_intents)
+    intents: IntentsType = Field(default_factory=get_default_intents)
 
     class Config:  # noqa: D106
         case_sensitive = True
@@ -70,7 +70,8 @@ class BaseLoggingConfig(BaseSettings):
 
     level: int = 0
     force: bool = True
-    handlers: Sequence[HandlerType] = Field(default_factory=get_handlers_for_filtered)
+    handlers: Sequence[HandlerType] = Field(
+        default_factory=get_handlers_for_filtered)
 
     class Config:  # noqa: D106
         case_sensitive = True
@@ -96,6 +97,12 @@ class MainBotConfig(BaseSettings):
     db: ConfigBD = Field(default_factory=ConfigBD)
     bot: BotConfig = Field(default_factory=BotConfig)
     logging: LoggingConfig = Field(default_factory=LoggingConfig)
+
+
+class EventsConfig(BaseSettings):
+    """Configuration for discord bot events."""
+
+    voice_role: int = 1193983949832196237
 
 
 config = MainBotConfig()

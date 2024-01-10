@@ -8,7 +8,7 @@ from bot.misc.logs import InterceptHandler
 from bot.misc.types import HandlerType, IntentsType
 
 
-def get_default_msg_intents() -> IntentsType:
+def get_default_intents() -> IntentsType:
     """Returns default intents with certain presets.
 
     Specific settings: enabled message contents.
@@ -19,6 +19,7 @@ def get_default_msg_intents() -> IntentsType:
     intents = Intents.default()
     # noinspection PyDunderSlots,PyUnresolvedReferences
     intents.message_content = True
+    intents.members = True
     return intents
 
 

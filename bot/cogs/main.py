@@ -2,6 +2,7 @@ from bot.misc.types import BotType
 
 usr_command_list = [
     "example",
+    "info",
 ]
 
 general_cogs_list = [

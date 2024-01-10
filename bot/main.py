@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 from bot.cogs.general import help
-from bot.cogs.main import setup_cogs_for_user
+from bot.cogs.main import setup_cogs_for_user, setup_general_cogs
 from bot.misc.config import config
 from bot.misc.utils import SingletonABC
 
@@ -26,11 +26,13 @@ class BotMarlboro(commands.Bot, metaclass=SingletonABC):
             "cooldown": commands.CooldownMapping.from_cooldown(3, 5, commands.BucketType.user),
         }
 
-        self.help_command = help.MarlboroHelpCommand(command_attrs=attributes_for_help)
+        self.help_command = help.MarlboroHelpCommand(
+            command_attrs=attributes_for_help)
         self._command_registration()
 
     def _command_registration(self) -> None:
         setup_cogs_for_user(self)
+        setup_general_cogs(self)
 
     def run(self) -> None:
         """Start a bot using a secret token."""
